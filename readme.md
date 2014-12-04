@@ -1,4 +1,4 @@
 ## Archivism
 
 # For production
-* Comment the line SassCompiler ... in public/index.php
+* Comment the line _SassCompiler::run(stuff, stuff)_ ... in public/index.php
