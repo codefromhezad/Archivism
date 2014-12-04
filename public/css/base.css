@@ -1,0 +1,16 @@
+@import url(//fonts.googleapis.com/css?family=Lato:300,400,900);
+
+body {
+	margin:0;
+	padding: 0;
+	font-family:'Lato', Helvetica, Arial, sans-serif;
+	font-size: 100%;
+	color: #252525;
+}
+
+#main-container {
+	position: relative;
+	display: block;
+	width: 800px;
+	margin: auto;
+}
