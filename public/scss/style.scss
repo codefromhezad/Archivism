@@ -1,4 +1,111 @@
+$vivid-primary: orange;
+$vivid-secondary: cyan;
+
 ol.item-add-steps {
 	margin: 0;
 	padding: 0;
+	width: 100%;
+	min-height: 100%;
+
+	&> li {
+		display: block;
+		width: 100%;
+		padding-bottom: 4em;
+		transition: opacity 0.5s;
+		-webkit-transition: opacity 0.5s;
+
+		input[type=submit],
+		button {
+			border: none;
+			background: orange;
+			padding: 1em 2em;
+			text-transform: uppercase;
+			color: #fff;
+			font-weight: 300;
+			font-size: 1.5em;
+		}
+	}
+
+	&> li h2 {
+		margin: 0.5em 0;
+		font-weight: 300;
+		font-size: 5em;
+		color: #fff;
+		color: rgba(255, 255, 255, 0.85);
+	}
+
+	&> li.step-1 {
+		top: 0;
+		height: 30%;
+		background: $vivid-primary;
+	}
+
+	&> li.step-2 {
+		background: $vivid-secondary;
+		top: 30%;
+		opacity: 0;
+
+		ul.item-add-categories {
+			display: block;
+			overflow: hidden;
+			padding: 0;
+			margin: 0;
+			margin-bottom: 4em;
+
+			li {
+				width: 180px;
+				height: 200px;
+				margin: 0;
+				margin-left: 10px;
+				text-align: center;
+				position: relative;
+				left: -10px;
+				display: block;
+				float: left;
+				background-color: rgba(0, 0, 0, 0.1);
+				transition: background-color 0.25s;
+				-webkit-transition: background-color 0.25s;
+
+				&:hover {
+					background-color: rgba(0, 0, 0, 0.25);
+				}
+
+				&.selected {
+					background-color: rgba(0, 50, 100, 0.5)
+				}
+
+				a {
+					display: block;
+					position: absolute;
+					top: 0; bottom: 0;
+					left: 0; right: 0;
+					width: 100%;
+					height: 100%;
+					background-repeat: no-repeat;
+					background-position: center center;
+					background-size: 50%;
+					color: #252525;
+
+					span {
+						position: absolute;
+						bottom: 1.1em;
+						left: 0;
+						width: 100%;
+					}
+				}
+			}
+
+			li.item-category-music a {
+				background-image: url('../img/arch-category-music.svg');
+			}
+
+			li.item-category-video a {
+				background-image: url('../img/arch-category-video.svg');
+			}
+
+			li.item-category-website a {
+				background-image: url('../img/arch-category-website.svg');
+			}
+		}
+	}
 }

@@ -8,14 +8,13 @@
 	{{ HTML::style('css/base.css') }}
 	{{ HTML::style('css/style.css') }}
 
+	{{ HTML::script('https://code.jquery.com/jquery-1.11.1.min.js') }}
+	{{ HTML::script('js/main.js') }}
+
 </head>
 <body>
-	<div id="main-container">
+	<div id="fullscreen-container">
 		@yield('content')
 	</div>
-
-	<script>
-		@yield('script')
-	</script>
 </body>
 </html>
