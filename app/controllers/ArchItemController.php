@@ -91,6 +91,6 @@ class ArchItemController extends BaseController {
 	 */
 	public function providerType($url)
 	{
-		//$ArchProvider::check($url);
+		ArchProvider::check($url);
 	}
 }
