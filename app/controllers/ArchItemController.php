@@ -89,8 +89,22 @@ class ArchItemController extends BaseController {
 	 * @param  string $url
 	 * @return JSON Response
 	 */
-	public function providerType($url)
+	public function providerType()
 	{
-		ArchProvider::check($url);
+		if ( Session::token() !== Input::get( '_token' ) ) {
+            return Response::json( array(
+            	'status' => 'error',
+                'msg'    => 'Unauthorized attempt to create setting'
+            ) );
+        }
+
+        $url = Input::get('url');
+
+		$provider = ArchProvider::check($url);
+
+		return Response::json( array(
+        	'status' => 'ok',
+            'slug'    => $provider->slug
+        ) );
 	}
 }

@@ -2,7 +2,10 @@
 
 @section('content')
 	<form class="add-item-form" action="/store" method="post">
+		{{ Form::token() }}
+
 		<input type="hidden" id="item-kind" name="item-kind" value="default" />
+		<input type="hidden" id="item-provider" name="item-provider" value="default" />
 
 		<ol class="item-add-steps">
 			<li class="step-1">
