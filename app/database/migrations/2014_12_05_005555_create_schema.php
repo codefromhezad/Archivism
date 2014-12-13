@@ -12,7 +12,7 @@ class CreateSchema extends Migration {
 			$table->increments('id');
 	        $table->string('name');
 	        $table->string('href');
-	        $table->enum('kind', array('music', 'video', 'website', 'default'));
+	        $table->string('kind');
 	        $table->timestamps();
 		});
 	}

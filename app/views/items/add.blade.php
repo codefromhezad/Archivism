@@ -2,7 +2,7 @@
 
 @section('content')
 	<form class="add-item-form" action="/store" method="post">
-		<input type="hidden" id="item-category" name="item-category" value="default" />
+		<input type="hidden" id="item-kind" name="item-kind" value="default" />
 
 		<ol class="item-add-steps">
 			<li class="step-1">
@@ -17,18 +17,11 @@
 					<h2>Classify</h2>
 
 					<ul class="item-add-categories">
-						<li class="item-category item-category-music">
-							<a href="#" data-category="music"><span>Music</span></a>
-						</li>
-						<li class="item-category item-category-video">
-							<a href="#" data-category="video"><span>Video</span></a>
-						</li>
-						<li class="item-category item-category-website">
-							<a href="#" data-category="website"><span>Website</span></a>
-						</li>
-						<li class="item-category item-category-default selected">
-							<a href="#" data-category="default"><span>Don't care</span></a>
-						</li>
+						@foreach($itemKinds as $kindSlug => $kindLabel)
+							<li class="item-kind item-kind-{{ $kindSlug }} @if($kindSlug == 'default') selected @endif">
+								<a href="#" data-kind="{{ $kindSlug }}"><span>{{ $kindLabel }}</span></a>
+							</li>
+						@endforeach
 					</ul>
 
 					<input type="submit" value="Save" />

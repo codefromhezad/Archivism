@@ -9,7 +9,7 @@ class ArchItemController extends BaseController {
 	 */
 	public function index()
 	{
-		return View::make('items.add');
+		//
 	}
 
 
@@ -20,7 +20,7 @@ class ArchItemController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('items.add');
+		return View::make('items.add', array('itemKinds' => ArchItemKind::$kinds));
 	}
 
 
@@ -83,4 +83,14 @@ class ArchItemController extends BaseController {
 	}
 
 
+	/**
+	 * AJAX: Check provider type of the content
+	 *
+	 * @param  string $url
+	 * @return JSON Response
+	 */
+	public function providerType($url)
+	{
+		//$ArchProvider::check($url);
+	}
 }

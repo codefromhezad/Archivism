@@ -95,16 +95,20 @@ ol.item-add-steps {
 				}
 			}
 
-			li.item-category-music a {
-				background-image: url('../img/arch-category-music.svg');
+			li.item-kind-band a {
+				background-image: url('../img/arch-kind-band.svg');
 			}
 
-			li.item-category-video a {
-				background-image: url('../img/arch-category-video.svg');
+			li.item-kind-movie a {
+				background-image: url('../img/arch-kind-movie.svg');
 			}
 
-			li.item-category-website a {
-				background-image: url('../img/arch-category-website.svg');
+			li.item-kind-literature a {
+				background-image: url('../img/arch-kind-literature.svg');
+			}
+
+			li.item-kind-default a {
+				background-image: url('../img/arch-kind-default.svg');
 			}
 		}
 	}

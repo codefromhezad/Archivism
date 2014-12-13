@@ -14,14 +14,14 @@ $( function() {
 		return false;
 	})
 
-	$('.item-category a').click( function(e) {
+	$('.item-kind a').click( function(e) {
 		e.preventDefault();
 
 		var $this = $(this);
-		var category = $this.attr('data-category');
+		var kind = $this.attr('data-kind');
 
-		$('#item-category').val(category);
-		$this.closest('li').addClass('selected').siblings('li.item-category').removeClass('selected');
+		$('#item-kind').val(kind);
+		$this.closest('li').addClass('selected').siblings('li.item-kind').removeClass('selected');
 		return false;
 	});
 

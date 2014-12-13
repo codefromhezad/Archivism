@@ -84,12 +84,15 @@ ol.item-add-steps > li.step-2 ul.item-add-categories li a span {
   left: 0;
   width: 100%;
 }
-ol.item-add-steps > li.step-2 ul.item-add-categories li.item-category-music a {
-  background-image: url('../img/arch-category-music.svg');
+ol.item-add-steps > li.step-2 ul.item-add-categories li.item-kind-band a {
+  background-image: url('../img/arch-kind-band.svg');
 }
-ol.item-add-steps > li.step-2 ul.item-add-categories li.item-category-video a {
-  background-image: url('../img/arch-category-video.svg');
+ol.item-add-steps > li.step-2 ul.item-add-categories li.item-kind-movie a {
+  background-image: url('../img/arch-kind-movie.svg');
 }
-ol.item-add-steps > li.step-2 ul.item-add-categories li.item-category-website a {
-  background-image: url('../img/arch-category-website.svg');
+ol.item-add-steps > li.step-2 ul.item-add-categories li.item-kind-literature a {
+  background-image: url('../img/arch-kind-literature.svg');
+}
+ol.item-add-steps > li.step-2 ul.item-add-categories li.item-kind-default a {
+  background-image: url('../img/arch-kind-default.svg');
 }
