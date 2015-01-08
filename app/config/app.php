@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost',
+	'url' => 'http://archivism.dev',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return array(
 	|
 	*/
 
-	'key' => 'YourSecretKey!!!',
+	'key' => 'hfyxpRkgYifZGvuRhJotpBRHjZeuGyBt',
 
 	'cipher' => MCRYPT_RIJNDAEL_128,
 

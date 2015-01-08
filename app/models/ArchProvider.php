@@ -1,16 +1,21 @@
 <?php
 
-define('PROVIDER_DEFAULT', 'default');
-define('PROVIDER_YOUTUBE', 'youtube');
-
 class ArchProvider extends Eloquent {
-	public $slug = PROVIDER_DEFAULT;
+	public static $providers = array(
+		'DEFAULT' => 'default',
+		'YOUTUBE' => 'youtube'
+	);
+
+	public $slug;
 
 	public function __construct($url) {
 
+		// Set default slug
+		$this->slug = ArchProvider::$providers['DEFAULT'];
+
 		// Check if YouTube
 		if( preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $url, $matches) ) {
-			$this->slug = PROVIDER_YOUTUBE;
+			$this->slug = ArchProvider::$providers['YOUTUBE'];
 		}
 
 		return $this;

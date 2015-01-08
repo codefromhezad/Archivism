@@ -1,8 +1,56 @@
-function handleAjaxErrors(error) {
-	alert(error);
+function checkAndHandleAjaxError(payload) {
+	if( payload.status === undefined ) {
+		if( payload.error ) {
+			// Laravel's DEBUG is certainly activated
+			// so we can show the error contents
+
+			console.error('AJAX: FATAL ERROR');
+			console.log(payload.error.message);
+			console.log('File: '+payload.error.file+' on line '+payload.error.line);
+			
+		} else {
+
+			// We have no idea about the contents of this payload :/ There's no
+			// standard status returned in the JSON data nor any fatal
+			// errors reported (when DEBUG is NOT active server-side, we can't see
+			// any data nor fatal error status) 
+			// 
+			// That should never happen, but you know ... You can't be too careful.
+			//
+			// Well .. The part about being too careful is true when handling critical 
+			// stuff (Like a website, a webapp, a you-name-it in production). In 
+			// *real* life, being *too* careful only leads to unnecessary stress.
+			//
+			// Sometimes, it's nice to go with the flow :)
+			//
+			// Anyway, have a wonderful day, whoever you are.
+
+			console.error('AJAX: Couldn\'t get any status for this request. Something went wrong :/');
+		}
+
+		return false;
+
+	} else if( payload.status == "ok" ) {
+
+		return true;
+
+	} else {
+		// Damn, something wrong happened but we have some data back from the
+		// server. It shouldn't be any sensible data about the app so we can return
+		// it. (Most of the time, it will be form validation data)
+
+		return false;
+	}
 }
 
 $( function() {
+
+	// General uncatched AJAX errors (Most probably because of 
+	// a fatal server error in production)
+	$( document ).ajaxError(function( event, jqxhr, settings, thrownError ) {
+		checkAndHandleAjaxError(jqxhr.responseJSON);
+	});
+
 
 	// item.add view scripts
 	$('#item-link').keyup( function(e) {
@@ -14,13 +62,17 @@ $( function() {
 					_token: $('input[name=_token]').val(), 
 					url: $('#item-link').val()
 				}, 
-				function(data) {
-					if( data.status == "ok" ) {
-						$('#item-provider').val(data.slug);
+				function(payload) {
+
+					if( checkAndHandleAjaxError(payload) ) {
+						$('#item-provider').val(payload.slug);
 					} else {
-						handleAjaxErrors("Something wrong happened :/ Please try again.");
+						// TODO: Handle nicely the error ?
+						// => Can't find or think of any possible/displayable error here
+						//	  excepted server errors which are already handled by the
+						//	  validateAjaxPayload function.
 					}
-					console.log($('.add-item-form').serialize());
+					
 					$('.item-add-steps .step-2').css({opacity: 1});
 				},
 				'json'

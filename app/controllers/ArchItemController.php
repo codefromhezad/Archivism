@@ -9,7 +9,9 @@ class ArchItemController extends BaseController {
 	 */
 	public function index()
 	{
-		//
+		echo "<p>This is the index but there's nothing here.</p>
+			  <p>Well, there's this message ... But you get my point</p>
+			  <p>Anyway, you wanna head to <a href='/create'>/create</a>";
 	}
 
 
