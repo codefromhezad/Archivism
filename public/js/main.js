@@ -102,6 +102,8 @@ $( function() {
 						$('h2', $step2).html(payload.kindGuessMessage);
 						$step2.verticalCenter();
 
+						$('#submit-ready').val('1');
+
 						$('body').animate({scrollTop: $step2.offset().top}, 'fast');
 
 					} else {
@@ -119,8 +121,13 @@ $( function() {
 
 	$('.add-item-form').submit( function(e) {
 		e.preventDefault();
+
+		if( $('#submit-ready').val() == "1" ) {
+			$(this)[0].submit();
+		}
+
 		return false;
-	})
+	});
 
 	$('.item-kind a').click( function(e) {
 		e.preventDefault();

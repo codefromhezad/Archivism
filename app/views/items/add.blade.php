@@ -6,6 +6,7 @@
 
 		<input type="hidden" id="item-kind" name="item-kind" value="default" />
 		<input type="hidden" id="item-provider" name="item-provider" value="default" />
+		<input type="hidden" id="submit-ready" value="0" />
 
 		<ol class="item-add-steps">
 			<li class="step-1">
@@ -28,7 +29,7 @@
 						<li class="clear-float-helper"></li>
 					</ul>
 
-					<input type="submit" value="Save" />
+					<input type="submit" value="Save" class="submit-button" />
 				</div>
 			</li>
 		</ol>
