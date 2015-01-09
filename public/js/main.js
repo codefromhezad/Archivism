@@ -7,7 +7,7 @@ function checkAndHandleAjaxError(payload) {
 			console.error('AJAX: FATAL ERROR');
 			console.log(payload.error.message);
 			console.log('File: '+payload.error.file+' on line '+payload.error.line);
-			
+
 		} else {
 
 			// We have no idea about the contents of this payload :/ There's no
@@ -45,8 +45,8 @@ function checkAndHandleAjaxError(payload) {
 
 $( function() {
 
-	// General uncatched AJAX errors (Most probably because of 
-	// a fatal server error in production)
+	// General uncatched AJAX errors (Most probably because of a fatal server error
+	// when the app is in production)
 	$( document ).ajaxError(function( event, jqxhr, settings, thrownError ) {
 		checkAndHandleAjaxError(jqxhr.responseJSON);
 	});
@@ -57,7 +57,7 @@ $( function() {
 		e.preventDefault();
 		if(e.which==13) {
 			$.post(
-				'/ajax/provider-type', 
+				'/ajax/guess-item-provider-and-kind', 
 				{
 					_token: $('input[name=_token]').val(), 
 					url: $('#item-link').val()
@@ -65,7 +65,14 @@ $( function() {
 				function(payload) {
 
 					if( checkAndHandleAjaxError(payload) ) {
-						$('#item-provider').val(payload.slug);
+						$('#item-provider').val(payload.provider);
+						$('#item-kind').val(payload.kind);
+
+						var $itemKindSelector = $('.item-add-categories a[data-kind="'+payload.kind+'"]');
+
+						if( $itemKindSelector.length ) {
+							$itemKindSelector.click();
+						}
 					} else {
 						// TODO: Handle nicely the error ?
 						// => Can't find or think of any possible/displayable error here

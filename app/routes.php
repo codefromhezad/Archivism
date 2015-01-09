@@ -14,4 +14,4 @@
 Route::resource('/', 'ArchItemController');
 
 /* AJAX Routes */
-Route::post('/ajax/provider-type', 'ArchItemController@providerType');
+Route::post('/ajax/guess-item-provider-and-kind', 'ArchItemController@guessProviderAndKind');

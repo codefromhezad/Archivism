@@ -88,10 +88,15 @@ class ArchItemController extends BaseController {
 	/**
 	 * AJAX: Check provider type of the content
 	 *
-	 * @param  string $url
+	 * @POST Expected data
+	 * 	+ url 	 => String
+	 *  + _token => CSRF Protection Token.
+	 *
+	 * TODO: Put _token verification in a pre-filter
+	 * 
 	 * @return JSON Response
 	 */
-	public function providerType()
+	public function guessProviderAndKind()
 	{
 		if ( Session::token() !== Input::get( '_token' ) ) {
             return Response::json( array(
@@ -102,11 +107,13 @@ class ArchItemController extends BaseController {
 
         $url = Input::get('url');
 
-		$provider = ArchProvider::check($url);
+		$itemProvider = ArchProvider::makeFromUrl($url);
+		$itemKind = ArchItemKind::getDefaultKindFromProvider($itemProvider->slug);
 
 		return Response::json( array(
-        	'status' => 'ok',
-            'slug'    => $provider->slug
+        	'status' 	=> 'ok',
+            'provider'	=> $itemProvider->slug,
+            'kind'	 	=> $itemKind
         ) );
 	}
 }
