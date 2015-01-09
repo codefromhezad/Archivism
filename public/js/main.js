@@ -47,7 +47,7 @@ $.fn.verticalCenter = function() {
 	return $(this).each( function() {
 		$(this).find('.vertical-center-please').each( function() {
 			var $this = $(this);
-			var centerTop = ($(window).height() - $this.height()) / 2;
+			var centerTop = ($this.parent().height() - $this.height()) / 2;
 			var thisCssPosition = $this.css('position');
 
 			if( thisCssPosition == 'static' ) {
@@ -99,8 +99,8 @@ $( function() {
 						var $step2 = $('.item-add-steps .step-2');
 
 						$step2.addClass('active');
-						$step2.verticalCenter();
 						$('h2', $step2).html(payload.kindGuessMessage);
+						$step2.verticalCenter();
 
 						$('body').animate({scrollTop: $step2.offset().top}, 'fast');
 

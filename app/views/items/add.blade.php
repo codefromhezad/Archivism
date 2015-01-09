@@ -17,7 +17,7 @@
 			</li>
 			<li class="step-2">
 				<div class="center-container vertical-center-please">
-					<h2>Classify <small class="classify-message"></small></h2>
+					<h2></h2>
 
 					<ul class="item-add-categories">
 						@foreach($itemKinds as $kindSlug => $kindLabel)
@@ -28,7 +28,7 @@
 						<li class="clear-float-helper"></li>
 					</ul>
 
-					<input type="submit" value="Save" />
+					<input type="submit" value="Save" style="display: none;" />
 				</div>
 			</li>
 		</ol>

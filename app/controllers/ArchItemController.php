@@ -113,7 +113,7 @@ class ArchItemController extends BaseController {
 		if( ArchItemKind::$kinds[$itemKind] != ArchItemKind::$kinds['default'] ) {
 			$providerGuessingMessage = 'It looks like your item comes from <i>'.$itemProvider->name.'</i>.';
 		} else {
-			$providerGuessingMessage = 'Hum ... We don\'t really know what this item is from. But that\'s ok, we\'ll save it anyway';
+			$providerGuessingMessage = 'Hum ... It looks like I don\'t know this website. But don\'t worry, we\'ll save it anyway';
 		}
 
 		$providerGuessingMessage .= '<br />What kind of stuff is it?';
