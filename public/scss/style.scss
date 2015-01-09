@@ -10,7 +10,8 @@ ol.item-add-steps {
 	&> li {
 		display: block;
 		width: 100%;
-		padding-bottom: 4em;
+		height: 100%;
+		position: absolute;
 		transition: opacity 0.5s;
 		-webkit-transition: opacity 0.5s;
 
@@ -27,7 +28,7 @@ ol.item-add-steps {
 	}
 
 	&> li h2 {
-		margin: 0.5em 0;
+		margin: 0;
 		font-weight: 300;
 		font-size: 5em;
 		color: #fff;
@@ -36,13 +37,12 @@ ol.item-add-steps {
 
 	&> li.step-1 {
 		top: 0;
-		height: 30%;
 		background: $vivid-primary;
 	}
 
 	&> li.step-2 {
 		background: $vivid-secondary;
-		top: 30%;
+		top: 100%;
 		opacity: 0;
 		display: none;
 

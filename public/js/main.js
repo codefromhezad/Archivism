@@ -43,13 +43,36 @@ function checkAndHandleAjaxError(payload) {
 	}
 }
 
+$.fn.verticalCenter = function() {
+	return $(this).each( function() {
+		$(this).find('.vertical-center-please').each( function() {
+			var $this = $(this);
+			var centerTop = ($(window).height() - $this.height()) / 2;
+			var thisCssPosition = $this.css('position');
+
+			if( thisCssPosition == 'static' ) {
+				$this.css({position: 'relative'});
+			}
+			
+			$this.css({top: centerTop + 'px'});
+		});
+	});
+}
+
 $( function() {
 
 	// General uncatched AJAX errors (Most probably because of a fatal server error
 	// when the app is in production)
-	$( document ).ajaxError(function( event, jqxhr, settings, thrownError ) {
+	$(document).ajaxError(function( event, jqxhr, settings, thrownError ) {
 		checkAndHandleAjaxError(jqxhr.responseJSON);
 	});
+
+
+	// Layout helpers are defined on resize.
+	// That helps
+	$(window).resize( function() {
+		$('body').verticalCenter();
+	}).resize();
 
 
 	// item.add view scripts
@@ -73,10 +96,13 @@ $( function() {
 							$itemKindSelector.click();
 						}
 
-						$('.item-add-steps .step-2').addClass('active');
-						$('.item-add-steps .step-2 h2').html(payload.kindGuessMessage);
+						var $step2 = $('.item-add-steps .step-2');
 
-						$('body').animate({scrollTop: $('.item-add-steps .step-2').offset().top}, 'fast');
+						$step2.addClass('active');
+						$step2.verticalCenter();
+						$('h2', $step2).html(payload.kindGuessMessage);
+
+						$('body').animate({scrollTop: $step2.offset().top}, 'fast');
 
 					} else {
 						// TODO: Handle nicely the error ?

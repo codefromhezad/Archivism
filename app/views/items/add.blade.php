@@ -9,14 +9,14 @@
 
 		<ol class="item-add-steps">
 			<li class="step-1">
-				<div class="center-container ">
+				<div class="center-container vertical-center-please">
 					<h2>Paste</h2>
 					
 					<input type="text" class="full-input paste-link-input" name="item-link" id="item-link" />
 				</div>
 			</li>
 			<li class="step-2">
-				<div class="center-container">
+				<div class="center-container vertical-center-please">
 					<h2>Classify <small class="classify-message"></small></h2>
 
 					<ul class="item-add-categories">
