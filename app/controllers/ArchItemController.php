@@ -110,7 +110,7 @@ class ArchItemController extends BaseController {
 		$itemProvider = ArchProvider::makeFromUrl($url);
 		$itemKind = ArchItemKind::getDefaultKindFromProvider($itemProvider->slug);
 
-		if( ArchItemKind::$kinds[$itemKind] != ArchItemKind::$kinds['default'] ) {
+		if( $itemKind != 'default' ) {
 			$providerGuessingMessage = 'It looks like your item comes from <i>'.$itemProvider->name.'</i>.';
 		} else {
 			$providerGuessingMessage = 'Hum ... I don\'t know this website. But don\'t worry, I\'ll save it anyway.';
