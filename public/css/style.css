@@ -38,6 +38,11 @@ ol.item-add-steps > li.step-2 {
   opacity: 0;
   display: none;
 }
+ol.item-add-steps > li.step-2 h2 {
+  margin: 2em 0;
+  font-weight: 300;
+  font-size: 2em;
+}
 ol.item-add-steps > li.step-2.active {
   display: block;
   opacity: 1;

@@ -46,6 +46,12 @@ ol.item-add-steps {
 		opacity: 0;
 		display: none;
 
+		h2 {
+			margin: 2em 0;
+			font-weight: 300;
+			font-size: 2em;
+		}
+
 		&.active {
 			display: block;
 			opacity: 1;

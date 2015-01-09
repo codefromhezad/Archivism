@@ -101,7 +101,7 @@ class ArchItemController extends BaseController {
 		if ( Session::token() !== Input::get( '_token' ) ) {
             return Response::json( array(
             	'status' => 'error',
-                'msg'    => 'Unauthorized attempt to create setting'
+                'msg'    => 'Unauthorized'
             ) );
         }
 
@@ -110,10 +110,19 @@ class ArchItemController extends BaseController {
 		$itemProvider = ArchProvider::makeFromUrl($url);
 		$itemKind = ArchItemKind::getDefaultKindFromProvider($itemProvider->slug);
 
+		if( ArchItemKind::$kinds[$itemKind] != ArchItemKind::$kinds['default'] ) {
+			$providerGuessingMessage = 'It looks like your item comes from <i>'.$itemProvider->name.'</i>.';
+		} else {
+			$providerGuessingMessage = 'Hum ... We don\'t really know what this item is from. But that\'s ok, we\'ll save it anyway';
+		}
+
+		$providerGuessingMessage .= '<br />What kind of stuff is it?';
+
 		return Response::json( array(
         	'status' 	=> 'ok',
             'provider'	=> $itemProvider->slug,
-            'kind'	 	=> $itemKind
+            'kind'	 	=> $itemKind,
+            'kindGuessMessage' => $providerGuessingMessage,
         ) );
 	}
 }

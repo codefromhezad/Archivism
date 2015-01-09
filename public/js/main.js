@@ -72,14 +72,18 @@ $( function() {
 						if( $itemKindSelector.length ) {
 							$itemKindSelector.click();
 						}
+
+						$('.item-add-steps .step-2').addClass('active');
+						$('.item-add-steps .step-2 h2').html(payload.kindGuessMessage);
+
+						$('body').animate({scrollTop: $('.item-add-steps .step-2').offset().top}, 'fast');
+
 					} else {
 						// TODO: Handle nicely the error ?
 						// => Can't find or think of any possible/displayable error here
 						//	  excepted server errors which are already handled by the
 						//	  validateAjaxPayload function.
 					}
-					
-					$('.item-add-steps .step-2').addClass('active');
 				},
 				'json'
 			);

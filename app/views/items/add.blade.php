@@ -17,7 +17,7 @@
 			</li>
 			<li class="step-2">
 				<div class="center-container">
-					<h2>Classify</h2>
+					<h2>Classify <small class="classify-message"></small></h2>
 
 					<ul class="item-add-categories">
 						@foreach($itemKinds as $kindSlug => $kindLabel)
