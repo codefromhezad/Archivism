@@ -36,6 +36,11 @@ ol.item-add-steps > li.step-2 {
   background: cyan;
   top: 30%;
   opacity: 0;
+  display: none;
+}
+ol.item-add-steps > li.step-2.active {
+  display: block;
+  opacity: 1;
 }
 ol.item-add-steps > li.step-2 ul.item-add-categories {
   display: block;
@@ -45,13 +50,11 @@ ol.item-add-steps > li.step-2 ul.item-add-categories {
   margin-bottom: 4em;
 }
 ol.item-add-steps > li.step-2 ul.item-add-categories li {
-  width: 180px;
-  height: 200px;
-  margin: 0;
-  margin-left: 10px;
-  text-align: center;
   position: relative;
-  left: -10px;
+  width: 198px;
+  height: 198px;
+  margin: 0;
+  text-align: center;
   display: block;
   float: left;
   background-color: rgba(0, 0, 0, 0.1);
@@ -86,6 +89,9 @@ ol.item-add-steps > li.step-2 ul.item-add-categories li a span {
 }
 ol.item-add-steps > li.step-2 ul.item-add-categories li.item-kind-band a {
   background-image: url('../img/arch-kind-band.svg');
+}
+ol.item-add-steps > li.step-2 ul.item-add-categories li.item-kind-tvshow a {
+  background-image: url('../img/arch-kind-tvshow.svg');
 }
 ol.item-add-steps > li.step-2 ul.item-add-categories li.item-kind-movie a {
   background-image: url('../img/arch-kind-movie.svg');

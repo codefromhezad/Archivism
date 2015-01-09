@@ -66,7 +66,6 @@ $( function() {
 
 					if( checkAndHandleAjaxError(payload) ) {
 						$('#item-provider').val(payload.provider);
-						$('#item-kind').val(payload.kind);
 
 						var $itemKindSelector = $('.item-add-categories a[data-kind="'+payload.kind+'"]');
 
@@ -80,7 +79,7 @@ $( function() {
 						//	  validateAjaxPayload function.
 					}
 					
-					$('.item-add-steps .step-2').css({opacity: 1});
+					$('.item-add-steps .step-2').addClass('active');
 				},
 				'json'
 			);

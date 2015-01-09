@@ -44,6 +44,12 @@ ol.item-add-steps {
 		background: $vivid-secondary;
 		top: 30%;
 		opacity: 0;
+		display: none;
+
+		&.active {
+			display: block;
+			opacity: 1;
+		}
 
 		ul.item-add-categories {
 			display: block;
@@ -53,13 +59,14 @@ ol.item-add-steps {
 			margin-bottom: 4em;
 
 			li {
-				width: 180px;
-				height: 200px;
-				margin: 0;
-				margin-left: 10px;
-				text-align: center;
 				position: relative;
-				left: -10px;
+
+				width: 198px;
+				height: 198px;
+
+				margin: 0;
+
+				text-align: center;
 				display: block;
 				float: left;
 				background-color: rgba(0, 0, 0, 0.1);
@@ -97,6 +104,10 @@ ol.item-add-steps {
 
 			li.item-kind-band a {
 				background-image: url('../img/arch-kind-band.svg');
+			}
+
+			li.item-kind-tvshow a {
+				background-image: url('../img/arch-kind-tvshow.svg');
 			}
 
 			li.item-kind-movie a {

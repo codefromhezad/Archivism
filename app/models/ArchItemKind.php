@@ -2,10 +2,11 @@
 
 class ArchItemKind extends Eloquent {
 	public static $kinds = array(
-		'band' => "Band",
-		'movie' => "Movie",
-		'literature' => "Literature",
-		'default' => "Default"
+		'band'		=> "Band",
+		'movie'		=> "Movie",
+		'tvshow'	=> 'TV Show',
+		'literature'=> "Literature",
+		'default'	=> "Default"
 	);
 
 	public static $defaultProviderKind = array(
