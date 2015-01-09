@@ -28,7 +28,7 @@
 						<li class="clear-float-helper"></li>
 					</ul>
 
-					<input type="submit" value="Save" style="display: none;" />
+					<input type="submit" value="Save" />
 				</div>
 			</li>
 		</ol>
