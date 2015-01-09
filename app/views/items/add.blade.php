@@ -25,6 +25,7 @@
 								<a href="#" data-kind="{{ $kindSlug }}"><span>{{ $kindLabel }}</span></a>
 							</li>
 						@endforeach
+						<li class="clear-float-helper"></li>
 					</ul>
 
 					<input type="submit" value="Save" />

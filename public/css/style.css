@@ -44,12 +44,11 @@ ol.item-add-steps > li.step-2.active {
 }
 ol.item-add-steps > li.step-2 ul.item-add-categories {
   display: block;
-  overflow: hidden;
   padding: 0;
   margin: 0;
   margin-bottom: 4em;
 }
-ol.item-add-steps > li.step-2 ul.item-add-categories li {
+ol.item-add-steps > li.step-2 ul.item-add-categories li.item-kind {
   position: relative;
   width: 198px;
   height: 198px;
@@ -58,16 +57,19 @@ ol.item-add-steps > li.step-2 ul.item-add-categories li {
   display: block;
   float: left;
   background-color: rgba(0, 0, 0, 0.1);
-  transition: background-color 0.25s;
-  -webkit-transition: background-color 0.25s;
+  transition: background-color 0.25s, transform 0.25s;
+  -webkit-transition: background-color 0.25s, -webkit-transform 0.25s;
 }
-ol.item-add-steps > li.step-2 ul.item-add-categories li:hover {
+ol.item-add-steps > li.step-2 ul.item-add-categories li.item-kind:hover {
   background-color: rgba(0, 0, 0, 0.25);
+  -ms-transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+  transform: scale(0.95);
 }
-ol.item-add-steps > li.step-2 ul.item-add-categories li.selected {
+ol.item-add-steps > li.step-2 ul.item-add-categories li.item-kind.selected {
   background-color: rgba(0, 50, 100, 0.5);
 }
-ol.item-add-steps > li.step-2 ul.item-add-categories li a {
+ol.item-add-steps > li.step-2 ul.item-add-categories li.item-kind a {
   display: block;
   position: absolute;
   top: 0;
@@ -81,7 +83,7 @@ ol.item-add-steps > li.step-2 ul.item-add-categories li a {
   background-size: 50%;
   color: #252525;
 }
-ol.item-add-steps > li.step-2 ul.item-add-categories li a span {
+ol.item-add-steps > li.step-2 ul.item-add-categories li.item-kind a span {
   position: absolute;
   bottom: 1.1em;
   left: 0;

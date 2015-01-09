@@ -53,12 +53,11 @@ ol.item-add-steps {
 
 		ul.item-add-categories {
 			display: block;
-			overflow: hidden;
 			padding: 0;
 			margin: 0;
 			margin-bottom: 4em;
 
-			li {
+			li.item-kind {
 				position: relative;
 
 				width: 198px;
@@ -70,15 +69,18 @@ ol.item-add-steps {
 				display: block;
 				float: left;
 				background-color: rgba(0, 0, 0, 0.1);
-				transition: background-color 0.25s;
-				-webkit-transition: background-color 0.25s;
+				transition: background-color 0.25s, transform 0.25s;
+				-webkit-transition: background-color 0.25s, -webkit-transform 0.25s;
 
 				&:hover {
 					background-color: rgba(0, 0, 0, 0.25);
+					-ms-transform: scale(0.95);
+				    -webkit-transform: scale(0.95);
+				    transform: scale(0.95);
 				}
 
 				&.selected {
-					background-color: rgba(0, 50, 100, 0.5)
+					background-color: rgba(0, 50, 100, 0.5);
 				}
 
 				a {

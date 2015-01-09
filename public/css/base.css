@@ -9,6 +9,11 @@ body {
 	height: 100%;
 }
 
+.clear-float-helper {
+	clear: both;
+	height: 0;
+}
+
 #fullscreen-container {
 	position: absolute;
 	top: 0; bottom: 0;
