@@ -33,7 +33,30 @@ class ArchItemController extends BaseController {
 	 */
 	public function store()
 	{
-		return "Store ALL THE THINGS !";
+		$rules = array(
+            'item-kind'     => 'required',
+            'item-provider' => 'required',
+            'item-href'     => 'required|url'
+        );
+        $validator = Validator::make(Input::all(), $rules);
+
+        if ($validator->fails()) {
+            return Redirect::to('items/create')
+                ->withErrors($validator)
+                ->withInput(Input::all());
+        } else {
+            // store
+            $item = new ArchItem;
+            $item->kind     = Input::get('item-kind');
+            $item->provider = Input::get('item-provider');
+            $item->href     = Input::get('item-href');
+            $item->name     = 'unkown';
+            $item->save();
+
+            // redirect
+            Session::flash('message', 'Ok, the thing is saved.');
+            return Redirect::to('items');
+        }
 	}
 
 

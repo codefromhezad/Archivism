@@ -1,6 +1,9 @@
 @extends('layout')
 
 @section('content')
+	
+	{{ HTML::ul($errors->all()) }}
+	
 	<ol class="item-add-steps">
 		<li class="step-1">
 			<div class="center-container vertical-center-please">
