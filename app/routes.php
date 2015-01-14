@@ -11,7 +11,8 @@
 |
 */
 
-Route::resource('/', 'ArchItemController');
+Route::get('/', 'ArchItemController@index');
+Route::resource('items', 'ArchItemController');
 
 /* AJAX Routes */
 Route::post('/ajax/guess-item-provider-and-kind', 'ArchItemController@guessProviderAndKind');

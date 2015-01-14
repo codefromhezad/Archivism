@@ -1,5 +1,5 @@
 function checkAndHandleAjaxError(payload) {
-	if( payload.status === undefined ) {
+	if( payload ) {
 		if( payload.error ) {
 			// Laravel's DEBUG is certainly activated
 			// so we can show the error contents
@@ -8,36 +8,11 @@ function checkAndHandleAjaxError(payload) {
 			console.log(payload.error.message);
 			console.log('File: '+payload.error.file+' on line '+payload.error.line);
 
-		} else {
-
-			// We have no idea about the contents of this payload :/ There's no
-			// standard status returned in the JSON data nor any fatal
-			// errors reported (when DEBUG is NOT active server-side, we can't see
-			// any data nor fatal error status) 
-			// 
-			// That should never happen, but you know ... You can't be too careful.
-			//
-			// Well .. The part about being too careful is true when handling critical 
-			// stuff (Like a website, a webapp, a you-name-it in production). In 
-			// *real* life, being *too* careful only leads to unnecessary stress.
-			//
-			// Sometimes, it's nice to go with the flow :)
-			//
-			// Anyway, have a wonderful day, whoever you are.
-
-			console.error('AJAX: Couldn\'t get any status for this request. Something went wrong :/');
+			return false;
+		
+		} else if( payload.status == "ok" ) {
+			return true;
 		}
-
-		return false;
-
-	} else if( payload.status == "ok" ) {
-
-		return true;
-
-	} else {
-		// Damn, something wrong happened but we have some data back from the
-		// server. It shouldn't be any sensible data about the app so we can return
-		// it. (Most of the time, it will be form validation data)
 
 		return false;
 	}
@@ -76,20 +51,21 @@ $( function() {
 
 
 	// item.add view scripts
-	$('#item-link').keyup( function(e) {
+	$('#item-link-input').keyup( function(e) {
 		e.preventDefault();
+
 		if(e.which==13) {
 			$.post(
 				'/ajax/guess-item-provider-and-kind', 
 				{
 					_token: $('input[name=_token]').val(), 
-					url: $('#item-link').val()
+					url: $('#item-link-input').val()
 				}, 
 				function(payload) {
-
 					if( checkAndHandleAjaxError(payload) ) {
-						$('#item-provider').val(payload.provider);
 
+						$('#item-link').val(payload.url);
+						$('#item-provider').val(payload.provider);
 						var $itemKindSelector = $('.item-add-categories a[data-kind="'+payload.kind+'"]');
 
 						if( $itemKindSelector.length ) {
@@ -102,8 +78,6 @@ $( function() {
 						$('h2', $step2).html(payload.kindGuessMessage);
 						$step2.verticalCenter();
 
-						$('#submit-ready').val('1');
-
 						$('body').animate({scrollTop: $step2.offset().top}, 'fast');
 
 					} else {
@@ -115,15 +89,6 @@ $( function() {
 				},
 				'json'
 			);
-		}
-		return false;
-	});
-
-	$('.add-item-form').submit( function(e) {
-		e.preventDefault();
-
-		if( $('#submit-ready').val() == "1" ) {
-			$(this)[0].submit();
 		}
 
 		return false;

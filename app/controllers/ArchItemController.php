@@ -11,7 +11,7 @@ class ArchItemController extends BaseController {
 	{
 		return "<p>This is the index but there's nothing here.</p>
 			  <p>Well, there's this message ... But you get my point</p>
-			  <p>Anyway, you wanna head to <a href='/create'>/create</a>";
+			  <p>Anyway, you wanna head to <a href='".URL::to('items/create')."'>/create</a>";
 	}
 
 
@@ -123,6 +123,7 @@ class ArchItemController extends BaseController {
             'provider'	=> $itemProvider->slug,
             'kind'	 	=> $itemKind,
             'kindGuessMessage' => $providerGuessingMessage,
+            'url' 		=> $url
         ) );
 	}
 }
