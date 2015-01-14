@@ -107,7 +107,7 @@ class ArchItemController extends BaseController {
 
         $url = Input::get('url');
 
-		$itemProvider = ArchProvider::makeFromUrl($url);
+		$itemProvider = new ArchProvider($url);
 		$itemKind = ArchItemKind::getDefaultKindFromProvider($itemProvider->slug);
 
 		if( $itemKind != 'default' ) {

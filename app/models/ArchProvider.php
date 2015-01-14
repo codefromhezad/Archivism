@@ -9,15 +9,9 @@ class ArchProvider extends Eloquent {
 	public $slug;
 	public $name;
 
-	public function __construct($url) {
-
-		// Set default slug
+	public function __construct($url = null) {
 		$this->setDataFromSlug('default');
-
-		// Check if YouTube
-		if( preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $url, $matches) ) {
-			$this->setDataFromSlug('youtube');
-		}
+		$this->setDefaultProviderFromUrl($url);
 
 		return $this;
 	}
@@ -31,7 +25,10 @@ class ArchProvider extends Eloquent {
 		$this->name = self::$providers[$this->slug];
 	}
 
-	static public function makeFromUrl($url) {
-		return new ArchProvider($url);
+	public function setDefaultProviderFromUrl($url) {
+		// Check if YouTube
+		if( preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $url, $matches) ) {
+			$this->setDataFromSlug('youtube');
+		}
 	}
 }
