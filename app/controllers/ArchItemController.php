@@ -132,7 +132,7 @@ class ArchItemController extends BaseController {
 
 		$itemProvider = new ArchProvider($url);
 		$itemKind = ArchItemKind::getDefaultKindFromProvider($itemProvider->slug);
-
+		
 		if( $itemKind != 'default' ) {
 			$providerGuessingMessage = 'It looks like your item comes from <i>'.$itemProvider->name.'</i>.';
 		} else {
@@ -146,7 +146,9 @@ class ArchItemController extends BaseController {
             'provider'	=> $itemProvider->slug,
             'kind'	 	=> $itemKind,
             'kindGuessMessage' => $providerGuessingMessage,
-            'url' 		=> $url
+            'url' 		=> $url,
+            'nameSuggestion' => $itemProvider->provider_name_suggestion,
+            'uniqueId'  => $itemProvider->unique_id
         ) );
 	}
 }

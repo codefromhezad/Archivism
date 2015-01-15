@@ -8,15 +8,15 @@ class ArchProvider extends Eloquent {
 
 	public $slug;
 	public $name;
+	public $url = null;
+	public $unique_id = null;
 
 	public function __construct($url = null) {
-		$this->setDataFromSlug('default');
-		$this->setDefaultProviderFromUrl($url);
-
-		return $this;
+		$this->setAs('default');
+		$this->setFromUrl($url);
 	}
 
-	public function setDataFromSlug($slug) {
+	public function setAs($slug) {
 		if( isset( self::$providers[$slug] ) ) {
 			$this->slug = $slug;
 		} else {
@@ -25,10 +25,13 @@ class ArchProvider extends Eloquent {
 		$this->name = self::$providers[$this->slug];
 	}
 
-	public function setDefaultProviderFromUrl($url) {
+	public function setFromUrl($url = null) {
+		$this->url = $url;
+
 		// Check if YouTube
 		if( preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $url, $matches) ) {
-			$this->setDataFromSlug('youtube');
-		}
+			$this->setAs('youtube');
+			$this->unique_id = $matches[0];
+		} 
 	}
 }
