@@ -33,6 +33,7 @@
 					<input type="hidden" id="item-provider" name="item-provider" value="default" />
 					<input type="hidden" id="item-link" name="item-href" />
 					<input type="hidden" id="item-name" name="item-name" />
+					<input type="hidden" id="item-provider_unique_id" name="item-provider_unique_id" />
 					
 					<input type="submit" value="Save" class="submit-button" />
 					

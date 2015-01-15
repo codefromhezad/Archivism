@@ -34,29 +34,32 @@ class ArchItemController extends BaseController {
 	public function store()
 	{
 		$rules = array(
-            'item-kind'     => 'required',
-            'item-provider' => 'required',
-            'item-href'     => 'required|url'
-        );
-        $validator = Validator::make(Input::all(), $rules);
+			'item-kind'     => 'required',
+			'item-provider' => 'required',
+			'item-name'     => 'required',
+			'item-provider_unique_id' => 'required',
+			'item-href'     => 'required|url'
+		);
+		$validator = Validator::make(Input::all(), $rules);
 
-        if ($validator->fails()) {
-            return Redirect::to('items/create')
-                ->withErrors($validator)
-                ->withInput(Input::all());
-        } else {
-            // store
-            $item = new ArchItem;
-            $item->kind     = Input::get('item-kind');
-            $item->provider = Input::get('item-provider');
-            $item->href     = Input::get('item-href');
-            $item->name     = 'unkown';
-            $item->save();
+		if ($validator->fails()) {
+			return Redirect::to('items/create')
+			    ->withErrors($validator)
+			    ->withInput(Input::all());
+		} else {
+			// store
+			$item = new ArchItem;
+			$item->kind     = Input::get('item-kind');
+			$item->provider = Input::get('item-provider');
+			$item->provider_unique_id = Input::get('item-provider_unique_id');
+			$item->href     = Input::get('item-href');
+			$item->name     = Input::get('item-name');
+			$item->save();
 
-            // redirect
-            Session::flash('message', 'Ok, the thing is saved.');
-            return Redirect::to('items');
-        }
+			// redirect
+			Session::flash('message', 'Ok, <em>'.htmlentities($item->name).'</em> has been saved successfully.');
+			return Redirect::to('items');
+		}
 	}
 
 
@@ -132,7 +135,7 @@ class ArchItemController extends BaseController {
 
 		$itemProvider = new ArchProvider($url);
 		$itemKind = ArchItemKind::getDefaultKindFromProvider($itemProvider->slug);
-		
+
 		if( $itemKind != 'default' ) {
 			$providerGuessingMessage = 'It looks like your item comes from <i>'.$itemProvider->name.'</i>.';
 		} else {
@@ -148,7 +151,7 @@ class ArchItemController extends BaseController {
             'kindGuessMessage' => $providerGuessingMessage,
             'url' 		=> $url,
             'nameSuggestion' => $itemProvider->provider_name_suggestion,
-            'uniqueId'  => $itemProvider->unique_id
+            'itemUniqueId'  => $itemProvider->unique_id
         ) );
 	}
 }

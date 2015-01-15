@@ -87,7 +87,7 @@ $( function() {
 					if( checkAndHandleAjaxError(payload) ) {
 						$('#item-link').val(payload.url);
 						$('#item-provider').val(payload.provider);
-
+						$('#item-provider_unique_id').val(payload.itemUniqueId);
 						$('#item-name').val($('#item-name-input').val());
 
 						var $itemKindSelector = $('.item-add-categories a[data-kind="'+payload.kind+'"]');
