@@ -2,12 +2,20 @@
 /* Constants */
 $max-site-width: 1960px;
 
+
 /* Colors */
 $vivid-primary: orange;
 $vivid-secondary: cyan;
 
 
-/* Helpers / Architecture styles */
+/* Helper mixins */
+@mixin fluid-square($size) {
+	width: $size;
+	padding-bottom: $size;
+	height: 0;
+}
+
+/* Architecture / CSS Helpers */
 .center-container {
 	width: 80%;
 	max-width: $max-site-width;
@@ -15,13 +23,37 @@ $vivid-secondary: cyan;
 	padding-top: 1px;
 }
 
+/* items.index styles */
+ul.items-index {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
 
-/* Add Item Styles */
+	li {
+		@include fluid-square(25%);
+		float: left;
+
+		.inner-item {
+			margin: 10px;
+			position: relative;
+
+			h3 {
+				margin: 0;
+			}
+		}
+	}
+}
+
+
+
+
+/* items.create Styles */
 ol.item-add-steps {
 	margin: 0;
 	padding: 0;
 	width: 100%;
 	min-height: 100%;
+	list-style-type: none;
 
 	&> li {
 		display: block;
@@ -82,13 +114,9 @@ ol.item-add-steps {
 			margin-bottom: 4em;
 
 			li.item-kind {
-				$item-link-width: 20%;
-
 				position: relative;
 
-				width: $item-link-width;
-				padding-bottom: $item-link-width;
-				height: 0;
+				@include fluid-square(20%);
 
 				margin: 0;
 

@@ -1,14 +1,33 @@
-/* Constants *//* Colors *//* Helpers / Architecture styles */.center-container {
+/* Constants *//* Colors *//* Helper mixins *//* Architecture / CSS Helpers */.center-container {
   width: 80%;
   max-width: 1960px;
   margin: auto;
   padding-top: 1px;
 }
-/* Add Item Styles */ol.item-add-steps {
+/* items.index styles */ul.items-index {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+ul.items-index li {
+  width: 25%;
+  padding-bottom: 25%;
+  height: 0;
+  float: left;
+}
+ul.items-index li .inner-item {
+  margin: 10px;
+  position: relative;
+}
+ul.items-index li .inner-item h3 {
+  margin: 0;
+}
+/* items.create Styles */ol.item-add-steps {
   margin: 0;
   padding: 0;
   width: 100%;
   min-height: 100%;
+  list-style-type: none;
 }
 ol.item-add-steps > li {
   display: block;
