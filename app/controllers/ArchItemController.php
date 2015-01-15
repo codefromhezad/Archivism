@@ -9,7 +9,7 @@ class ArchItemController extends BaseController {
 	 */
 	public function index()
 	{
-		$items = ArchItem::take(Config::get('archivism.default_listing_limit'))->get();
+		$items = ArchItem::listing()->get();
 		return View::make('items.index', array('items' => $items) );
 	}
 
