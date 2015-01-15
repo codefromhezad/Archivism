@@ -7,9 +7,11 @@
 	<ol class="item-add-steps">
 		<li class="step-1">
 			<div class="center-container vertical-center-please">
-				<h2>Paste</h2>
-				
-				<input type="text" class="full-input paste-link-input" id="item-link-input" />
+				<h2>Paste your link here</h2>
+				<input type="text" class="full-input paste-link-input" id="item-link-input" style="margin-bottom: 10%;" />
+
+				<h2>And give it a name</h2>
+				<input type="text" class="full-input item-name-input" id="item-name-input" />
 			</div>
 		</li>
 		<li class="step-2">
@@ -30,6 +32,7 @@
 					<input type="hidden" id="item-kind" name="item-kind" value="default" />
 					<input type="hidden" id="item-provider" name="item-provider" value="default" />
 					<input type="hidden" id="item-link" name="item-href" />
+					<input type="hidden" id="item-name" name="item-name" />
 					
 					<input type="submit" value="Save" class="submit-button" />
 					

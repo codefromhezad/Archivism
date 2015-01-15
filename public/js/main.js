@@ -51,10 +51,32 @@ $( function() {
 
 
 	// item.add view scripts
-	$('#item-link-input').keyup( function(e) {
+	$('#item-link-input, #item-name-input').keyup( function(e) {
 		e.preventDefault();
 
+		$(this).removeClass('form-error');
+
 		if(e.which==13) {
+			// Input fields validation
+			var is_valid = true;
+
+			// Items must have a name/title
+			if( ! $('#item-link-input').val() ) {
+				$('#item-link-input').addClass('form-error');
+				is_valid = false;
+			}
+
+			// Items must have an url ... 
+			if( ! $('#item-name-input').val() ) {
+				$('#item-name-input').addClass('form-error');
+				is_valid = false;
+			}
+
+			if( ! is_valid ) {
+				return;
+			}
+
+			// Processing user input (server-side)
 			$.post(
 				'/ajax/guess-item-provider-and-kind', 
 				{
@@ -63,9 +85,11 @@ $( function() {
 				}, 
 				function(payload) {
 					if( checkAndHandleAjaxError(payload) ) {
-
 						$('#item-link').val(payload.url);
 						$('#item-provider').val(payload.provider);
+
+						$('#item-name').val($('#item-name-input').val());
+
 						var $itemKindSelector = $('.item-add-categories a[data-kind="'+payload.kind+'"]');
 
 						if( $itemKindSelector.length ) {
