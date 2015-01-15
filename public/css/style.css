@@ -1,4 +1,10 @@
-ol.item-add-steps {
+/* Constants *//* Colors *//* Helpers / Architecture styles */.center-container {
+  width: 80%;
+  max-width: 1960px;
+  margin: auto;
+  padding-top: 1px;
+}
+/* Add Item Styles */ol.item-add-steps {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -40,7 +46,7 @@ ol.item-add-steps > li.step-2 {
 }
 ol.item-add-steps > li.step-2 h2 {
   margin: 0;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   font-weight: 300;
   font-size: 2em;
 }
@@ -56,8 +62,9 @@ ol.item-add-steps > li.step-2 ul.item-add-categories {
 }
 ol.item-add-steps > li.step-2 ul.item-add-categories li.item-kind {
   position: relative;
-  width: 198px;
-  height: 198px;
+  width: 20%;
+  padding-bottom: 20%;
+  height: 0;
   margin: 0;
   text-align: center;
   display: block;

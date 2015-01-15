@@ -22,11 +22,6 @@ body {
 	height: 100%;
 }
 
-.center-container {
-	width: 1000px;
-	margin: auto;
-	padding-top: 1px;
-}
 
 input[type=text],
 input[type=password],

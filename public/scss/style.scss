@@ -1,6 +1,22 @@
+
+/* Constants */
+$max-site-width: 1960px;
+
+/* Colors */
 $vivid-primary: orange;
 $vivid-secondary: cyan;
 
+
+/* Helpers / Architecture styles */
+.center-container {
+	width: 80%;
+	max-width: $max-site-width;
+	margin: auto;
+	padding-top: 1px;
+}
+
+
+/* Add Item Styles */
 ol.item-add-steps {
 	margin: 0;
 	padding: 0;
@@ -48,7 +64,7 @@ ol.item-add-steps {
 
 		h2 {
 			margin: 0;
-			margin-bottom: 2em;
+			margin-bottom: 1em;
 			font-weight: 300;
 			font-size: 2em;
 		}
@@ -65,10 +81,13 @@ ol.item-add-steps {
 			margin-bottom: 4em;
 
 			li.item-kind {
+				$item-link-width: 20%;
+
 				position: relative;
 
-				width: 198px;
-				height: 198px;
+				width: $item-link-width;
+				padding-bottom: $item-link-width;
+				height: 0;
 
 				margin: 0;
 
@@ -98,7 +117,7 @@ ol.item-add-steps {
 					width: 100%;
 					height: 100%;
 					background-repeat: no-repeat;
-					background-position: center center;
+					background-position: center 30%;
 					background-size: 50%;
 					color: #252525;
 
