@@ -27,20 +27,30 @@ input[type=text],
 input[type=password],
 input[type=number],
 input[type=url] {
-	border: none;
+	border: 1px solid transparent;;
 	background: #fff;
 	background: rgba(255, 255, 255, 0.85);
 	outline: none;
+
+	border-bottom: 2px solid transparent;
+	border-right: 1px solid transparent;
 }
 
 input[type=text]:focus,
 input[type=password]:focus,
 input[type=number]:focus,
 input[type=url]:focus {
-	border: none;
 	background: #fff;
 	background: rgba(255, 255, 255, 1);
 	outline: none;
+
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+
+	box-shadow: inset 1px 2px 5px 0px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: inset 1px 2px 5px 0px rgba(0, 0, 0, 0.3);
+	border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+	border-right: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 .full-input {
