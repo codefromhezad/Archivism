@@ -10,7 +10,6 @@ class ArchItemController extends BaseController {
 	public function index()
 	{
 		$items = ArchItem::take(Config::get('archivism.default_listing_limit'))->get();
-
 		return View::make('items.index', array('items' => $items) );
 	}
 
@@ -47,6 +46,7 @@ class ArchItemController extends BaseController {
 			    ->withErrors($validator)
 			    ->withInput(Input::all());
 		} else {
+
 			// store
 			$item = new ArchItem;
 			$item->kind     = Input::get('item-kind');
@@ -58,7 +58,7 @@ class ArchItemController extends BaseController {
 
 			// redirect
 			Session::flash('message', 'Ok, <em>'.htmlentities($item->name).'</em> has been saved successfully.');
-			return Redirect::to('items');
+			return Redirect::to('items/index');
 		}
 	}
 
